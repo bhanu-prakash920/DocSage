@@ -1,0 +1,79 @@
+[
+  {
+    "question": "What was Halcyon Grid's total revenue in 2025?",
+    "reference_answer": "412 million euros, up 18%.",
+    "expected_document": "halcyon-grid-annual-report-2025.pdf",
+    "expected_page": 1,
+    "tag": "text"
+  },
+  {
+    "question": "How much revenue did the storage segment make in 2025 and how did it change?",
+    "reference_answer": "79 million euros, up 126% from 35 million.",
+    "expected_document": "halcyon-grid-annual-report-2025.pdf",
+    "expected_page": 2,
+    "tag": "table"
+  },
+  {
+    "question": "How many megawatts of wind capacity were installed at the end of 2025?",
+    "reference_answer": "1,240 MW of wind.",
+    "expected_document": "halcyon-grid-annual-report-2025.pdf",
+    "expected_page": 3,
+    "tag": "figure"
+  },
+  {
+    "question": "What revenue range does Halcyon Grid guide for 2026?",
+    "reference_answer": "Between 450 and 480 million euros.",
+    "expected_document": "halcyon-grid-annual-report-2025.pdf",
+    "expected_page": 1,
+    "tag": "text"
+  },
+  {
+    "question": "What was the peak dunlin count in the winter census?",
+    "reference_answer": "4,300, trending up.",
+    "expected_document": "kestrel-bay-field-guide.docx",
+    "expected_page": null,
+    "tag": "table"
+  },
+  {
+    "question": "When is the best time to see migrating waders at Kestrel Bay?",
+    "reference_answer": "Late September, two hours either side of high tide.",
+    "expected_document": "kestrel-bay-field-guide.docx",
+    "expected_page": null,
+    "tag": "text"
+  },
+  {
+    "question": "What is the list price of the Orbit S2 and when does it ship?",
+    "reference_answer": "249 dollars (219 with a two-year plan); ships 12 February 2026.",
+    "expected_document": "orbit-sensor-launch-deck.pptx",
+    "expected_page": 2,
+    "tag": "text"
+  },
+  {
+    "question": "Which region had the most Orbit S2 pre-orders?",
+    "reference_answer": "North America with 8,200 units.",
+    "expected_document": "orbit-sensor-launch-deck.pptx",
+    "expected_page": 3,
+    "tag": "table"
+  },
+  {
+    "question": "Who owns the certification delay risk for the launch?",
+    "reference_answer": "Luis Brandt; mitigation is pre-testing in December.",
+    "expected_document": "orbit-sensor-launch-deck.pptx",
+    "expected_page": 4,
+    "tag": "table"
+  },
+  {
+    "question": "What is the response time for a SEV2 payments incident?",
+    "reference_answer": "15 minutes.",
+    "expected_document": "incident-runbook.md",
+    "expected_page": null,
+    "tag": "table"
+  },
+  {
+    "question": "How do you roll back the payments service?",
+    "reference_answer": "Run deployctl rollback payments --to previous.",
+    "expected_document": "incident-runbook.md",
+    "expected_page": null,
+    "tag": "text"
+  }
+]

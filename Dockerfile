@@ -1,0 +1,32 @@
+# syntax=docker/dockerfile:1.7
+# ---------- 1. build the web UI ----------
+FROM node:22-alpine AS web
+WORKDIR /web
+COPY web/package.json web/package-lock.json ./
+RUN npm ci --no-audit --no-fund
+COPY web/ ./
+RUN npm run build
+
+# ---------- 2. python runtime ----------
+FROM python:3.11-slim AS runtime
+ARG EXTRAS=""
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    UV_LINK_MODE=copy \
+    DOCSAGE_DATA_DIR=/data \
+    DOCSAGE_HOST=0.0.0.0 \
+    DOCSAGE_PORT=8000
+COPY --from=ghcr.io/astral-sh/uv:0.10 /uv /usr/local/bin/uv
+WORKDIR /app
+COPY pyproject.toml uv.lock README.md ./
+RUN uv sync --frozen --no-dev --no-install-project $(for e in $EXTRAS; do printf -- "--extra %s " "$e"; done)
+COPY docsage/ ./docsage/
+RUN uv sync --frozen --no-dev $(for e in $EXTRAS; do printf -- "--extra %s " "$e"; done)
+COPY --from=web /web/dist ./web/dist
+RUN useradd --create-home --uid 10001 docsage && mkdir -p /data && chown docsage /data
+USER docsage
+VOLUME ["/data"]
+EXPOSE 8000
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s \
+  CMD python -c "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/api/health').status==200 else 1)"
+CMD ["/app/.venv/bin/docsage", "serve", "--host", "0.0.0.0", "--port", "8000"]

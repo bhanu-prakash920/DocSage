@@ -1,0 +1,37 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Secrets
+.env
+
+# DocSage runtime data (indexes, uploads, extracted assets, SQLite)
+data/
+chroma_db/
+parsed_assets/
+*.sqlite3
+
+# Web
+web/node_modules/
+web/dist/
+web/test-results/
+
+# Evaluation JSON dumps (markdown summaries are committed)
+eval/results/*.json
+
+# IDE / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Docs and design assets
+docs/
+design/

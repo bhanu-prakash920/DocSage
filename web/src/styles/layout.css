@@ -1,0 +1,291 @@
+/* ===================== Shell ===================== */
+.shell {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.sidebar {
+  display: none;
+}
+.main {
+  min-width: 0;
+  padding: var(--s-5) var(--s-4) var(--s-8);
+}
+.main:focus {
+  outline: none;
+}
+.page {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  animation: page-in var(--dur-3) var(--ease-out);
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  }
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    padding: var(--s-4) var(--s-3);
+    border: 0;
+    border-right: var(--bw) solid var(--line);
+    box-shadow: none;
+    z-index: var(--z-header);
+  }
+  .main {
+    padding: var(--s-6) var(--s-6) var(--s-8);
+  }
+  .mobile-bar,
+  .mobile-nav {
+    display: none !important;
+  }
+}
+@media (min-width: 1440px) {
+  .main {
+    padding-inline: var(--s-7);
+  }
+}
+
+/* ===================== Brand ===================== */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+  padding: var(--s-1) var(--s-2);
+}
+.brand__mark {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  background: var(--surface-inverse);
+  border: var(--bw) solid var(--line);
+}
+.brand__mark::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 9px;
+  height: 14px;
+  border: 2px solid var(--ink-inverse);
+}
+.brand__mark span {
+  position: absolute;
+  right: 3px;
+  bottom: 5px;
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+}
+.brand__word {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.04em;
+}
+.brand__word span {
+  color: var(--ink-3);
+}
+
+/* ===================== Collection switcher ===================== */
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  width: 100%;
+  min-height: 52px;
+  padding: var(--s-2) var(--s-3);
+  border: var(--bw) solid var(--line);
+  border-radius: var(--r-1);
+  background: var(--surface);
+  text-align: left;
+  transition: box-shadow var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+.switcher:hover {
+  box-shadow: var(--shadow-hard);
+  transform: translate(-1px, -1px);
+}
+.switcher svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: var(--ink-2);
+}
+.switcher__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+}
+
+/* ===================== Navigation ===================== */
+.nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.nav__link {
+  position: relative;
+  display: grid;
+  grid-template-columns: 22px 18px 1fr;
+  align-items: center;
+  gap: var(--s-3);
+  min-height: 42px;
+  padding: 0 var(--s-3);
+  border: var(--bw) solid transparent;
+  border-radius: var(--r-1);
+  color: var(--ink-2);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-base);
+  text-decoration: none;
+  transition: background-color var(--dur-1) var(--ease), color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+}
+.nav__link svg {
+  width: 18px;
+  height: 18px;
+}
+.nav__index {
+  font-size: var(--fs-2xs);
+  color: var(--ink-3);
+}
+.nav__link:hover {
+  color: var(--ink);
+  background: var(--surface-sunken);
+}
+.nav__link.active {
+  color: var(--ink);
+  background: var(--surface);
+  border-color: var(--line);
+}
+.nav__link.active::before {
+  content: "";
+  position: absolute;
+  left: -1.5px;
+  top: -1.5px;
+  bottom: -1.5px;
+  width: 5px;
+  background: var(--accent);
+}
+.nav__link.active .nav__index {
+  color: var(--accent-text);
+}
+
+.sidebar__foot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line-soft);
+}
+.theme-toggle {
+  width: 100%;
+}
+.theme-toggle button {
+  flex: 1;
+  justify-content: center;
+}
+.provider-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 6px var(--s-2);
+  font-size: var(--fs-2xs);
+  color: var(--ink-2);
+  text-decoration: none;
+  border-radius: var(--r-1);
+}
+.provider-pill:hover {
+  background: var(--surface-sunken);
+}
+.provider-pill .muted {
+  margin-left: auto;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  background: var(--ink-3);
+}
+.dot--ok {
+  background: var(--c-green);
+}
+.dot--warn {
+  background: var(--c-amber);
+}
+.dot--err {
+  background: var(--c-salmon);
+}
+.indexing {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-2) var(--s-3);
+  border: var(--bw) solid var(--line);
+  background: var(--warn-bg);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+.indexing a {
+  color: var(--ink);
+}
+
+/* ===================== Mobile ===================== */
+.mobile-bar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  height: var(--header-h);
+  padding: 0 var(--s-3) 0 var(--s-2);
+  border: 0;
+  border-bottom: var(--bw) solid var(--line);
+  box-shadow: none;
+}
+.mobile-bar__page {
+  margin-left: auto;
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.mobile-nav {
+  position: fixed;
+  inset: var(--header-h) 0 auto 0;
+  z-index: var(--z-header);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  padding: var(--s-4);
+  max-height: calc(100dvh - var(--header-h));
+  overflow-y: auto;
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: var(--bw) solid var(--line);
+  animation: rise-in var(--dur-2) var(--ease-out);
+}
+
+.mobile-backdrop {
+  position: fixed;
+  inset: var(--header-h) 0 0 0;
+  z-index: calc(var(--z-header) - 1);
+  background: color-mix(in srgb, var(--c-black) 40%, transparent);
+  animation: fade-in var(--dur-2) var(--ease);
+}
+@media (min-width: 1024px) {
+  .mobile-backdrop {
+    display: none;
+  }
+}

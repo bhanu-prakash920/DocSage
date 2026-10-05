@@ -1,0 +1,216 @@
+/* =============================================================================================
+   DocSage design tokens: Glass Brutalism.
+   Brand palette comes from design/colors (charcoal, black, signal orange, blue, green, amber,
+   sand, salmon, paper). Brutalism sets structure (grid, borders, type); glass adds depth only on
+   navigation, floating controls and overlays.
+   ============================================================================================= */
+:root {
+  /* brand */
+  --c-charcoal: #232428;
+  --c-black: #000000;
+  --c-orange: #ff5623;
+  --c-blue: #5c88ee;
+  --c-green: #67c56b;
+  --c-amber: #ffbf33;
+  --c-sand: #ebd2ab;
+  --c-salmon: #efb8b1;
+  --c-paper: #ece9e4;
+  --c-paper-2: #fcfcf4;
+  --c-white: #ffffff;
+
+  /* type */
+  --font-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --fs-2xs: 0.6875rem;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.8125rem;
+  --fs-base: 0.9375rem;
+  --fs-md: 1.0625rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.625rem;
+  --fs-2xl: 2.125rem;
+  --fs-3xl: clamp(2.25rem, 1.6rem + 2.4vw, 3.25rem);
+  --fs-hero: clamp(3rem, 2rem + 4vw, 4.75rem);
+  --lh-tight: 1.05;
+  --lh-snug: 1.25;
+  --lh-body: 1.55;
+
+  /* space (4px base) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+
+  /* shape: sharp by default, restrained radii where touch comfort helps */
+  --r-0: 0;
+  --r-1: 2px;
+  --r-2: 4px;
+  --r-3: 8px;
+  --bw: 1.5px;
+  --bw-strong: 2px;
+
+  /* motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-1: 110ms;
+  --dur-2: 180ms;
+  --dur-3: 280ms;
+
+  /* layout */
+  --sidebar-w: 248px;
+  --header-h: 60px;
+  --content-max: 1360px;
+  --z-header: 30;
+  --z-overlay: 60;
+  --z-toast: 80;
+
+  --blur-1: 14px;
+  --blur-2: 22px;
+}
+
+/* ---- light theme (default) --------------------------------------------------------------- */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: var(--c-paper);
+  --bg-grid: rgba(35, 36, 40, 0.07);
+  --glow-a: rgba(255, 86, 35, 0.16);
+  --glow-b: rgba(92, 136, 238, 0.14);
+  --surface: var(--c-paper-2);
+  --surface-2: #f4f1ea;
+  --surface-sunken: #e2ded6;
+  --surface-inverse: var(--c-charcoal);
+  --ink: #0d0d0e;
+  --ink-2: #3b3c41;
+  --ink-3: #5f6066;
+  --ink-inverse: var(--c-paper-2);
+  --line: var(--c-charcoal);
+  --line-soft: rgba(35, 36, 40, 0.16);
+  --line-faint: rgba(35, 36, 40, 0.09);
+
+  --glass-1: rgba(252, 252, 244, 0.66);
+  --glass-2: rgba(252, 252, 244, 0.86);
+  --glass-border: rgba(35, 36, 40, 0.18);
+  --glass-edge: rgba(255, 255, 255, 0.9);
+  --shadow-hard: 3px 3px 0 var(--c-charcoal);
+  --shadow-hard-lg: 5px 5px 0 var(--c-charcoal);
+  --shadow-float: 0 24px 60px -24px rgba(35, 36, 40, 0.45);
+
+  --accent: var(--c-orange);
+  --accent-ink: var(--c-black);
+  --accent-soft: rgba(255, 86, 35, 0.12);
+  --accent-text: #a42400;
+  --link: #2c58c4;
+  --focus: #2c58c4;
+
+  --ok: #2f7a36;
+  --ok-bg: rgba(103, 197, 107, 0.18);
+  --warn: #7d5200;
+  --warn-bg: rgba(255, 191, 51, 0.24);
+  --err: #a42400;
+  --err-bg: rgba(239, 184, 177, 0.45);
+  --info: #2c58c4;
+  --info-bg: rgba(92, 136, 238, 0.14);
+
+  /* charts: validated (dataviz validate_palette, light surface #FCFCF4) */
+  --chart-text: #5580e6;
+  --chart-table: #a42400;
+  --chart-image: #d3a14a;
+  --chart-accent: var(--c-orange);
+  --chart-neutral: #b9b5ad;
+  --chart-grid: rgba(35, 36, 40, 0.1);
+}
+
+/* ---- dark theme ---------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0e0f11;
+    --bg-grid: rgba(236, 233, 228, 0.045);
+    --glow-a: rgba(255, 86, 35, 0.15);
+    --glow-b: rgba(92, 136, 238, 0.13);
+    --surface: #18191c;
+    --surface-2: var(--c-charcoal);
+    --surface-sunken: #121315;
+    --surface-inverse: var(--c-paper);
+    --ink: var(--c-paper-2);
+    --ink-2: #c7c4bd;
+    --ink-3: #93918b;
+    --ink-inverse: #0d0d0e;
+    --line: #4a4b52;
+    --line-soft: rgba(236, 233, 228, 0.13);
+    --line-faint: rgba(236, 233, 228, 0.07);
+    --glass-1: rgba(30, 31, 35, 0.58);
+    --glass-2: rgba(24, 25, 28, 0.84);
+    --glass-border: rgba(252, 252, 244, 0.11);
+    --glass-edge: rgba(252, 252, 244, 0.08);
+    --shadow-hard: 3px 3px 0 #000;
+    --shadow-hard-lg: 5px 5px 0 #000;
+    --shadow-float: 0 28px 70px -24px rgba(0, 0, 0, 0.8);
+    --accent-soft: rgba(255, 86, 35, 0.14);
+    --accent-text: #ff7d55;
+    --link: #8fb0f7;
+    --focus: #8fb0f7;
+    --ok: var(--c-green);
+    --ok-bg: rgba(103, 197, 107, 0.13);
+    --warn: var(--c-amber);
+    --warn-bg: rgba(255, 191, 51, 0.12);
+    --err: var(--c-salmon);
+    --err-bg: rgba(239, 184, 177, 0.12);
+    --info: #8fb0f7;
+    --info-bg: rgba(92, 136, 238, 0.14);
+    /* charts: validated against dark surface #1B1C1F */
+    --chart-text: #537bd9;
+    --chart-table: #d63a00;
+    --chart-image: #bd8b31;
+    --chart-neutral: #55565c;
+    --chart-grid: rgba(236, 233, 228, 0.09);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0e0f11;
+  --bg-grid: rgba(236, 233, 228, 0.045);
+  --glow-a: rgba(255, 86, 35, 0.15);
+  --glow-b: rgba(92, 136, 238, 0.13);
+  --surface: #18191c;
+  --surface-2: var(--c-charcoal);
+  --surface-sunken: #121315;
+  --surface-inverse: var(--c-paper);
+  --ink: var(--c-paper-2);
+  --ink-2: #c7c4bd;
+  --ink-3: #93918b;
+  --ink-inverse: #0d0d0e;
+  --line: #4a4b52;
+  --line-soft: rgba(236, 233, 228, 0.13);
+  --line-faint: rgba(236, 233, 228, 0.07);
+  --glass-1: rgba(30, 31, 35, 0.58);
+  --glass-2: rgba(24, 25, 28, 0.84);
+  --glass-border: rgba(252, 252, 244, 0.11);
+  --glass-edge: rgba(252, 252, 244, 0.08);
+  --shadow-hard: 3px 3px 0 #000;
+  --shadow-hard-lg: 5px 5px 0 #000;
+  --shadow-float: 0 28px 70px -24px rgba(0, 0, 0, 0.8);
+  --accent-soft: rgba(255, 86, 35, 0.14);
+  --accent-text: #ff7d55;
+  --link: #8fb0f7;
+  --focus: #8fb0f7;
+  --ok: var(--c-green);
+  --ok-bg: rgba(103, 197, 107, 0.13);
+  --warn: var(--c-amber);
+  --warn-bg: rgba(255, 191, 51, 0.12);
+  --err: var(--c-salmon);
+  --err-bg: rgba(239, 184, 177, 0.12);
+  --info: #8fb0f7;
+  --info-bg: rgba(92, 136, 238, 0.14);
+  --chart-text: #537bd9;
+  --chart-table: #d63a00;
+  --chart-image: #bd8b31;
+  --chart-neutral: #55565c;
+  --chart-grid: rgba(236, 233, 228, 0.09);
+}

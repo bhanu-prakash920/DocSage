@@ -1,5 +1,4 @@
-"""LlamaParse (cloud) for text, with local PyMuPDF extraction for tables and figures.
-"""
+"""LlamaParse (cloud) for text, with local PyMuPDF extraction for tables and figures."""
 
 from __future__ import annotations
 
